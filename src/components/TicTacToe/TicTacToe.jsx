@@ -9,6 +9,8 @@ const TicTacToe = () => {
 
     let [count, setCount] = useState(0)
     let [lock, setLock] = useState(false)
+    let [xScore, setXScore] = useState(0)
+    let [oScore, setOScore] = useState(0)
     let titleRef = useRef(null);
 
     let box1 = useRef(null);
@@ -63,8 +65,10 @@ const TicTacToe = () => {
         setLock(true);
         if (winner === "x") {
             titleRef.current.innerText = "Cross Wins!";
+            setXScore(prev => prev + 1);
         } else {
             titleRef.current.innerText = "Circle Wins!";
+            setOScore(prev => prev + 1);
         }
     }
 
@@ -80,6 +84,19 @@ const TicTacToe = () => {
     return (
         <div className='container'>
             <h1 className='title' ref={titleRef}>Tic Tac Toe</h1>
+            <div className='scoreboard'>
+                <div className={`score-player ${count % 2 === 0 && !lock ? 'active-x' : ''}`}>
+                    <span className='score-label score-x'>X</span>
+                    <span className='score-dash score-x'>-</span>
+                    <span className='score-value score-x'>{xScore}</span>
+                </div>
+                <div className='score-divider'></div>
+                <div className={`score-player ${count % 2 === 1 && !lock ? 'active-o' : ''}`}>
+                    <span className='score-label score-o'>O</span>
+                    <span className='score-dash score-o'>-</span>
+                    <span className='score-value score-o'>{oScore}</span>
+                </div>
+            </div>
             <div className='board'>
                 <div className="row1">
                     <div className="boxes" ref={box1} onClick={(e) => { toggle(e, 0) }}></div>

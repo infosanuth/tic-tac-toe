@@ -14,6 +14,54 @@
     margin: 0;
 }
 
+.scoreboard {
+    display: flex;
+    align-items: center;
+    background: #1f3540;
+    border-radius: 16px;
+    padding: clamp(10px, 1.5vh, 18px) clamp(24px, 4vw, 56px);
+    gap: clamp(20px, 4vw, 48px);
+}
+
+.score-player {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 6px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.score-player.active-x {
+    border-bottom-color: #F5B800;
+}
+
+.score-player.active-o {
+    border-bottom-color: #26ffcb;
+}
+
+.score-label,
+.score-dash,
+.score-value {
+    font-size: clamp(1.2rem, 3vmin, 2rem);
+    font-weight: 700;
+}
+
+.score-x {
+    color: #F5B800;
+}
+
+.score-o {
+    color: #26ffcb;
+}
+
+.score-divider {
+    width: 2px;
+    height: clamp(28px, 4vh, 44px);
+    background: #0f1b21;
+    border-radius: 2px;
+}
+
 .board {
     display: flex;
     flex-direction: column;
